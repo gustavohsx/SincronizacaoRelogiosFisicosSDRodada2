@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+message TimeRequest {
+  int64 client_time = 1;
+}
+
+message TimeResponse {
+  int64 server_time = 1;
+  int64 adjustment = 2;
+}
+
+service ClockSync {
+  rpc GetTime(TimeRequest) returns (TimeResponse);
+  rpc GetTimeStream(TimeRequest) returns (stream TimeResponse);
+}
